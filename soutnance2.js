@@ -24,5 +24,13 @@ function Ajoutercondidat(){
 	}
 	candidats.push(condidat);
 }
+function Ajouterplusieurs(){
+	let nbr = +prompt("combien de condidats tu veux Ajouter : ");
+	for(i = 0 ; i < nbr ; i++){
+		Ajoutercondidat();
+	}
+}
+
+
 
 
