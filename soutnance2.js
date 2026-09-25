@@ -19,7 +19,7 @@ const candidats = [{
 	cin: "PB64723",
 	nom: "Et-taya",
 	prenom: "Younes",
-	partiPolitique: "Pam",
+	partiPolitique: "pam",
 	age: 40,
 	electeurs: ["PB64723"]
 }
@@ -63,7 +63,7 @@ function Afichierliste() {
 					}
 				}
 			}
-			console.log(candidats);
+			AFFICHAGERDESFCT(candidats);
 			break;
 		}
 		case 2: {
@@ -74,10 +74,11 @@ function Afichierliste() {
 					tab[tab.length] = candidats[i];
 				}
 			}
-			console.log(tab);
+			AFFICHAGERDESFCT(tab);
 			break;
 		}
 	}
+	console.log("le nomber incorrect . ");
 }
 function voterparcandidat() {
 	let cin = prompt("doner ton cin : ");
@@ -85,35 +86,46 @@ function voterparcandidat() {
 }
 function modifierinfo() {
 	console.log("1 : Modifier la parti politique  ");
-	console.log("2 : Modifier l'age . ");
-	let choix = +prompt("doner ton choix  ");
+	console.log("2 : Modifier l'age ");
+	let choix = +prompt("doner ton choix : ");
 	switch (choix) {
 		case 1: {
-			let index = +prompt("donner l'index de l'objet tu veux modifier .");
-			let partpo = prompt("veillez donner la parti politique . ");
-			for (let i = 0; i < candidats.length;) {
+			let index = +prompt("donner l'index de l'objet tu veux modifier :");
+			let partpo = prompt("veillez donner la parti politique :  ");
+			for (let i = 0; i < candidats.length;i++) {
 				if (index === i) {
 					candidats[i].partiPolitique = partpo;
-
 				}
 			}
-			console.log(candidats);
+			AFFICHAGERDESFCT(candidats)
 			break;
-		}
+		};
 		case 2: {
 			let index = +prompt("donner l'index de l'objet tu veux modifier :");
 			let age = +prompt("veillez donner l'age : ");
-			for (let i = 0; i < candidats.length;) {
+			for (let i = 0; i < candidats.length;i++) {
 				if (index === i) {
 					candidats[i].age = age;
 				}
 			}
-			console.log(candidats);
-         break;
+			AFFICHAGERDESFCT(candidats);
+			break;
+		
+		}
+		default :{
+			console.log("le nomber incorrect ");
 		}
 	}
-	
 }
+modifierinfo()
+function AFFICHAGERDESFCT(tab) {
+	for (let i = 0; i < tab.length; i++) {
+		console.log(`cin : ${tab[i].cin}\nnom : ${tab[i].nom}\nprenom : ${tab[i].prenom}\npartipolitique : ${tab[i].partiPolitique}\nage : ${tab[i].age}\nelecteurs : ${tab[i].electeurs.length}\n`);
+	}
+}
+
+
+
 
 
 
