@@ -55,7 +55,7 @@ function Afichierliste() {
 	switch (choix) {
 		case 1: {
 			for (let i = 0; i < candidats.length; i++) {
-				for (let j = 0; j < candidats.length - i - 1; j++){
+				for (let j = 0; j < candidats.length - i - 1; j++) {
 					if (candidats[j].electeurs.length < candidats[j + 1].electeurs.length) {
 						let N = candidats[j];
 						candidats[j] = candidats[j + 1];
@@ -79,11 +79,43 @@ function Afichierliste() {
 		}
 	}
 }
-function voterparcandidat(){
+function voterparcandidat() {
+	let cin = prompt("doner ton cin : ");
 
+}
+function modifierinfo() {
+	console.log("1 : Modifier la parti politique  ");
+	console.log("2 : Modifier l'age . ");
+	let choix = +prompt("doner ton choix  ");
+	switch (choix) {
+		case 1: {
+			let index = +prompt("donner l'index de l'objet tu veux modifier .");
+			let partpo = prompt("veillez donner la parti politique . ");
+			for (let i = 0; i < candidats.length;) {
+				if (index === i) {
+					candidats[i].partiPolitique = partpo;
+
+				}
+			}
+			console.log(candidats);
+			break;
+		}
+		case 2: {
+			let index = +prompt("donner l'index de l'objet tu veux modifier :");
+			let age = +prompt("veillez donner l'age : ");
+			for (let i = 0; i < candidats.length;) {
+				if (index === i) {
+					candidats[i].age = age;
+				}
+			}
+			console.log(candidats);
+         break;
+		}
 	}
-
 	
+}
+
+
 
 
 
