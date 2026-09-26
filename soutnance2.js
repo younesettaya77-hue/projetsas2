@@ -124,6 +124,7 @@ function Afficherliste(candidats) {
     }
   }
 }
+
 //4. Voter pour un candidat :
 function voterparcandidat(candidats) {
   let cin = prompt("doner ton cin : ");
@@ -274,6 +275,7 @@ function verifier(candidats, cin) {
   }
   return true;
 }
+
 
 while (true) {
   console.clear()
