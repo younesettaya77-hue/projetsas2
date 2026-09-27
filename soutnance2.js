@@ -37,7 +37,7 @@ const candidats = [
     cin: "MA201",
     nom: "Salhi",
     prenom: "Anas",
-    partiPolitique: "pps",
+    partiPolitique: "PPS",
     age: 26,
     electeurs: ["AB154"],
   },
@@ -45,7 +45,7 @@ const candidats = [
     cin: "PB645",
     nom: "Et-taya",
     prenom: "Younes",
-    partiPolitique: "Pam",
+    partiPolitique: "YCD",
     age: 35,
     electeurs: ["PB645"],
   },
@@ -53,7 +53,7 @@ const candidats = [
     cin: "UC125",
     nom: "Ben lhaj",
     prenom: "Mohamed",
-    partiPolitique: "Pam",
+    partiPolitique: "PAM",
     age: 25,
     electeurs: ["UC125", "FT624", "AZ584"],
   },
@@ -77,6 +77,12 @@ function tridecroissant(candidats) {
 //1. Ajouter un nouveau candidat :
 function Ajoutercondidat(candidats) {
   let cin = prompt("veuillez entrer une CIN : ");
+  for(let i = 0 ; i < candidats.length; i++){
+    if(candidats[i].cin === cin){
+      console.log("CIN déja existe");
+    return;
+    }
+  }
   let nom = prompt("veuillez entrer un nom  : ");
   let prenom = prompt("veuillez entrer un prenom: ");
   let partiPolitique = prompt("veuillez entrer une parti Politique  : ");
@@ -216,16 +222,14 @@ function affichageDesCandidats(candidats) {
 }
 //6. Supprimer un candidat :
 function suprimercandid(candidats) {
-  let cin1 = prompt("donner moi un cin pour suprimer leur candidatset :");
+  let cin1 = prompt("CIN de candidats tu veux Suprimer :");
   for (let i = 0; i < candidats.length; i++) {
     if (candidats[i].electeurs.includes(cin1)) {
-      candidats[i].electeurs = candidats[i].electeurs.filter(
-        (element) => element != cin1,
-      );
+      candidats[i].electeurs = candidats[i].electeurs.filter( (element) => element != cin1 );
     }
     if (candidats[i].cin === cin1) {
-      candidats.splice(i, 1);
-      console.log("le candidat été suprimer");
+      console.log(`${candidats[i].nom} - ${candidats[i].prenom} - été Suprimer`);
+      candidats.splice(i, 1);  
     }
   }
 }
@@ -247,10 +251,7 @@ function statistiques(candidats) {
   for (let i = 0; i < candidats.length; i++) {
     compteur += candidats[i].electeurs.length;
   }
-  console.log(
-    " le nombre total de votes exprimés dans toute l'élection est : " +
-      compteur,
-  );
+  console.log(" le nombre total de votes exprimés dans toute l'élection est : " +compteur);
   console.log("  le Top 3 des candidats ayant le plus de votes est : ");
   tridecroissant(candidats);
   for (let i = 0; i < 3; i++) {
@@ -279,15 +280,18 @@ function verifier(candidats, cin) {
 
 while (true) {
   console.clear()
-  console.log("1 : Ajouter un nouveau candidat ");
-  console.log("2 : Ajouter plesieur nouveau candidat ");
-  console.log("3 : Afficher la liste des candidats ");
-  console.log("4 : Voter pour un candidat ");
-  console.log("5 : Modifier les informations d'un candidat ");
-  console.log("6 : Supprimer un candidat ");
-  console.log("7 : Rechercher des candidats ");
-  console.log("8 : Statistiques de l'élection ");
-  console.log("0 :  quitter ");
+  console.log("_________________________________________((  MENU  ))______________________________________");
+  
+  console.log("1--:____________________________ Ajouter un nouveau candidat_____________________________");
+  console.log("2--:__________________________Ajouter plesieur nouveau candidat _________________________");
+  console.log("3--:__________________________ Afficher la liste des candidats __________________________");
+  console.log("4--:______________________________ Voter pour un candidat _______________________________");
+  console.log("5--:_______________________ Modifier les informations d'un candidat _____________________");
+  console.log("6--:______________________________ Supprimer un candidat ________________________________");
+  console.log("7--:_____________________________Rechercher des candidats________________________________");
+  console.log("8--:____________________________ Statistiques de l'élection______________________________");
+  console.log("0--:______________________________________ quitter ______________________________________");
+  console.log("");
   let choix = +prompt("votre choix : ");
   switch (choix) {
     case 1: {
