@@ -77,10 +77,10 @@ function tridecroissant(candidats) {
 //1. Ajouter un nouveau candidat :
 function Ajoutercondidat(candidats) {
   let cin = prompt("veuillez entrer une CIN : ");
-  for(let i = 0 ; i < candidats.length; i++){
-    if(candidats[i].cin === cin){
+  for (let i = 0; i < candidats.length; i++) {
+    if (candidats[i].cin === cin) {
       console.log("CIN déja existe");
-    return;
+      return;
     }
   }
   let nom = prompt("veuillez entrer un nom  : ");
@@ -146,31 +146,18 @@ function voterparcandidat(candidats) {
     return;
   }
   if (!verifier(candidats, cin)) {
-    console.log(
-      " Vous avez déjà voté et vous n’avez pas le droit de modifier votre vote ni de voter à nouveau .",
-    );
+    console.log(" Vous avez déjà voté et vous n’avez pas le droit de modifier votre vote ni de voter à nouveau .");
     return;
   }
-  let cincandid = prompt(
-    "donner moi cin de candidat qui tu veux voter a lui :",
-  );
+  let cincandid = prompt("donner moi cin de candidat qui tu veux voter a lui :");
   for (let i = 0; i < candidats.length; i++) {
     for (j = 0; j < candidats[i].electeurs.length; j++) {
       if (
         candidats[i].cin === cincandid &&
-        candidats[i].partiPolitique !== "Indépendant"
+        candidats[i].partiPolitique !== "Independant"
       ) {
         candidats[i].electeurs[candidats[i].electeurs.length] = cin;
-        console.log(
-          " tu a voté par le candidat " +
-            candidats[i].nom +
-            " " +
-            candidats[i].prenom +
-            "-" +
-            "(" +
-            candidats[i].partiPolitique +
-            ")",
-        );
+        console.log(" tu a voté par le candidat " + candidats[i].nom +" " +candidats[i].prenom +"-" +"(" + candidats[i].partiPolitique +")");
         return;
       }
     }
@@ -186,7 +173,7 @@ function modifierinfo(candidats) {
     case 1: {
       affichageDesCandidats(candidats);
       let index = +prompt("donner l'index de candidt tu veux modifier .");
-      if(index > candidats.length){
+      if (index > candidats.length) {
         console.log(" index invalide");
         return;
       }
@@ -201,13 +188,13 @@ function modifierinfo(candidats) {
     case 2: {
       affichageDesCandidats(candidats);
       let index = +prompt("donner l'index de candidat tu veux modifier :");
-      if(index > candidats.length){
+      if (index > candidats.length) {
         console.log(" index invalide");
         return;
       }
       let age = +prompt("veillez donner l'age : ");
-      for (let i = 0; i < candidats.length;i++ ) {
-        if (index-1 === i) {
+      for (let i = 0; i < candidats.length; i++) {
+        if (index - 1 === i) {
           candidats[i].age = age;
         }
       }
@@ -226,11 +213,11 @@ function suprimercandid(candidats) {
   let cin1 = prompt("CIN de candidats tu veux Suprimer :");
   for (let i = 0; i < candidats.length; i++) {
     if (candidats[i].electeurs.includes(cin1)) {
-      candidats[i].electeurs = candidats[i].electeurs.filter( (element) => element != cin1 );
+      candidats[i].electeurs = candidats[i].electeurs.filter((element) => element != cin1);
     }
     if (candidats[i].cin === cin1) {
       console.log(`${candidats[i].nom} - ${candidats[i].prenom} - été Suprimer`);
-      candidats.splice(i, 1);  
+      candidats.splice(i, 1);
     }
   }
 }
@@ -254,7 +241,7 @@ function statistiques(candidats) {
   for (let i = 0; i < candidats.length; i++) {
     compteur += candidats[i].electeurs.length;
   }
-  console.log(" le nombre total de votes exprimés dans toute l'élection est : " +compteur);
+  console.log(" le nombre total de votes exprimés dans toute l'élection est : " + compteur);
   console.log("");
   console.log("  le Top 3 des candidats ayant le plus de votes est : ");
   tridecroissant(candidats);
@@ -286,7 +273,7 @@ function verifier(candidats, cin) {
 while (true) {
   console.clear()
   console.log("_________________________________________((  MENU  ))______________________________________");
-  
+
   console.log("1--:____________________________ Ajouter un nouveau candidat_____________________________");
   console.log("2--:__________________________Ajouter plesieur nouveau candidat _________________________");
   console.log("3--:__________________________ Afficher la liste des candidats __________________________");
@@ -302,28 +289,28 @@ while (true) {
     case 1: {
       console.clear();
       Ajoutercondidat(candidats);
-            prompt("appuyer pour continue");
+      prompt("appuyer pour continue");
 
       break;
     }
     case 2: {
       console.clear();
       Ajouterplusieurs(candidats);
-            prompt("appuyer pour continue");
+      prompt("appuyer pour continue");
 
       break;
     }
     case 3: {
       console.clear();
-      Afficherliste(candidats);  
-          prompt("appuyer pour continue");
+      Afficherliste(candidats);
+      prompt("appuyer pour continue");
 
       break;
     }
     case 4: {
       console.clear();
       voterparcandidat(candidats);
-            prompt("appuyer pour continue");
+      prompt("appuyer pour continue");
 
       break;
     }
@@ -331,7 +318,7 @@ while (true) {
     case 5: {
       console.clear();
       modifierinfo(candidats);
-            prompt("appuyer pour continue");
+      prompt("appuyer pour continue");
 
       break;
     }
@@ -339,7 +326,7 @@ while (true) {
     case 6: {
       console.clear();
       suprimercandid(candidats);
-            prompt("appuyer pour continue");
+      prompt("appuyer pour continue");
 
       break;
     }
@@ -347,14 +334,14 @@ while (true) {
     case 7: {
       console.clear();
       rechercheNom(candidats);
-            prompt("appuyer pour continue");
+      prompt("appuyer pour continue");
 
       break;
     }
     case 8: {
       console.clear();
       statistiques(candidats);
-            prompt("appuyer pour continue");
+      prompt("appuyer pour continue");
 
       break;
     }
@@ -364,7 +351,7 @@ while (true) {
     }
     default: {
       console.log("le choix invalide");
-            prompt("appuyer pour continue");
+      prompt("appuyer pour continue");
       break;
     }
   }
