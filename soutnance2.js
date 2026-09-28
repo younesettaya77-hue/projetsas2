@@ -5,7 +5,7 @@ const candidats = [
     cin: "AB154",
     nom: "Boushaba",
     prenom: "Soufiane",
-    partiPolitique: "Indépendant",
+    partiPolitique: "Independant",
     age: 40,
     electeurs: [],
   },
@@ -13,7 +13,7 @@ const candidats = [
     cin: "FT624",
     nom: "Taoussi",
     prenom: "Hanan",
-    partiPolitique: "Indépendant",
+    partiPolitique: "Independant",
     age: 32,
     electeurs: [],
   },
@@ -21,15 +21,15 @@ const candidats = [
     cin: "WZ695",
     nom: "Rachid",
     prenom: "tolla",
-    partiPolitique: "Indépendant",
-    age: 27,
+    partiPolitique: "Independant",
+    age: 15,
     electeurs: [],
   },
   {
     cin: "AZ584",
     nom: "Nbark",
     prenom: "oulaarbi",
-    partiPolitique: "Indépendant",
+    partiPolitique: "Independant",
     age: 61,
     electeurs: [],
   },
@@ -118,6 +118,7 @@ function Afficherliste(candidats) {
       break;
     }
     case 2: {
+      console.log("Respecter l’orthographe avant de saisir le nom");
       let partpoly = prompt("donner une parti politique : ");
       let tab = [];
       for (let i = 0; i < candidats.length; i++) {
@@ -136,12 +137,12 @@ function voterparcandidat(candidats) {
   let cin = prompt("doner ton cin : ");
   let existe = false;
   for (let i = 0; i < candidats.length; i++) {
-    if (candidats[i].cin === cin) {
+    if (candidats[i].cin === cin && candidats[i].age >= 18) {
       existe = true;
     }
   }
   if (!existe) {
-    console.log("cin n'est pas enregistrer");
+    console.log("cin n'est pas enregistrer OU age inferieur a 18");
     return;
   }
   if (!verifier(candidats, cin)) {
@@ -235,6 +236,7 @@ function suprimercandid(candidats) {
 }
 //7. Rechercher des candidats :
 function rechercheNom(tab) {
+  console.log("Respecter l’orthographe avant de saisir le nom");
   let Nom = prompt("donner moi le nom de candidat tu veux :");
   for (let i = 0; i < tab.length; i++) {
     if (tab[i].nom === Nom) {
@@ -247,16 +249,19 @@ function rechercheNom(tab) {
 //8. Statistiques de l'élection :
 function statistiques(candidats) {
   console.log(" le nombre total de candidats est : " + candidats.length);
+  console.log("");
   let compteur = 0;
   for (let i = 0; i < candidats.length; i++) {
     compteur += candidats[i].electeurs.length;
   }
   console.log(" le nombre total de votes exprimés dans toute l'élection est : " +compteur);
+  console.log("");
   console.log("  le Top 3 des candidats ayant le plus de votes est : ");
   tridecroissant(candidats);
   for (let i = 0; i < 3; i++) {
     console.log(`${i + 1} ${Afficheruncandidat(candidats[i])}`);
   }
+  console.log("");
   let perti = {};
   for (let i = 0; i < candidats.length; i++) {
     if (perti[candidats[i].partiPolitique]) {
